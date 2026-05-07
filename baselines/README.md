@@ -79,7 +79,7 @@ CUDA_VISIBLE_DEVICES=0,1 python NPO.py \
 
 ## MMUnlearner
 
-1. To generate the gradient mask, run:
+1. MMUnlearner needs to generate the gradient mask first, run:
 
 ```shell
 CUDA_VISIBLE_DEVICES=0 python MMunlearner_Mask.py \
@@ -93,7 +93,7 @@ CUDA_VISIBLE_DEVICES=0 python MMunlearner_Mask.py \
   --batch_size 2
 ```
 
-2. Run training process:
+2. Then you can run the training process:
 
 ```shell
 CUDA_VISIBLE_DEVICES=0,1 python MMunlearner.py \

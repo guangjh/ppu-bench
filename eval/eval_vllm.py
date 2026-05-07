@@ -327,7 +327,16 @@ def load_image(image_path):
 def load_image_from_row(row):
     image = row.get("image")
     if image is not None:
-        return image.convert("RGB") if isinstance(image, Image.Image) else load_image(image)
+        if isinstance(image, Image.Image):
+            return image.convert("RGB")
+        if isinstance(image, dict):
+            img_bytes = image.get("bytes")
+            if img_bytes:
+                return Image.open(io.BytesIO(img_bytes)).convert("RGB")
+            img_path = image.get("path")
+            if img_path:
+                return load_image(img_path)
+        return load_image(image)
     image_bytes = row.get("image_bytes")
     if image_bytes is not None:
         return Image.open(io.BytesIO(image_bytes)).convert("RGB")
@@ -593,6 +602,7 @@ def evaluate_rows(task_type, rows, llm, model_family, args, data_manager, predic
 
     for i in range(len(test_data)):
         record = dict(pending_rows[i])
+        record.pop("image", None)
         record['prompt'] = test_data[i]['prompt']
         record["prediction"] = new_res[i]
         if task_type == "classification":
@@ -641,20 +651,20 @@ def load_hf_data(args, normalized_task):
         print(f"Loading HF dataset: closerG/ppu-bench [{hf_config}]")
         ds = load_dataset("closerG/ppu-bench", hf_config)["test"]
         df = ds.to_pandas()
-        df["modality"] = df["modality"].map({"text": "qa", "text_image": "vqa"})
+        df["modality"] = df["modality"].replace({"text": "qa", "text_image": "vqa"})
         return df.reset_index(drop=True)
 
     if args.testset is not None:
         stem = setting_file_stem(args.setting, args.ratio)
         hf_config = f"cross_image_{stem}"
     else:
-        hf_config = normalized_task
+        hf_config = f"ppu_eval_{normalized_task}"
 
     print(f"Loading HF dataset: closerG/ppu-bench [{hf_config}]")
     ds = load_dataset("closerG/ppu-bench", hf_config)["test"]
     df = ds.to_pandas()
 
-    df["modality"] = df["modality"].map({"text": "qa", "text_image": "vqa"})
+    df["modality"] = df["modality"].replace({"text": "qa", "text_image": "vqa"})
 
     if args.testset is not None:
         image_col = f"image_{args.testset:03d}"

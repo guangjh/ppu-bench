@@ -8,9 +8,9 @@ from torch.utils.data import Dataset
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_COMPLETE_SPLIT_FILE = REPO_ROOT /  "split" / "complete_split.json"
-DEFAULT_SELECTIVE_SPLIT_FILE = REPO_ROOT /  "split" / "selective_split.json"
-DEFAULT_PERSONA_SPLIT_FILE = REPO_ROOT /  "split" / "persona_split.json"
+DEFAULT_COMPLETE_SPLIT_FILE = REPO_ROOT / "data" / "split" / "complete_split.json"
+DEFAULT_SELECTIVE_SPLIT_FILE = REPO_ROOT / "data" / "split" / "selective_split.json"
+DEFAULT_PERSONA_SPLIT_FILE = REPO_ROOT / "data" / "split" / "persona_split.json"
 
 DEFAULT_SPLIT_FILES = {
     "complete": DEFAULT_COMPLETE_SPLIT_FILE,

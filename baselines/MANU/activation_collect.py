@@ -5,9 +5,8 @@ import torch
 import numpy as np
 from collections import defaultdict
 import sys
-from tqdm import tqdm
-sys.path.append(('../'))
-sys.path.append(('../../'))
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
 
 
 def get_most_available_gpu():

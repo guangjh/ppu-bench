@@ -75,7 +75,7 @@ cd "${REPO_ROOT}"
 # run_eval "complete" "class" "forget" "30" "2" &
 # run_eval "complete" "class" "retain" "30" "3" &
 # run_eval "complete" "cloze" "forget" "30" "4" &
-# run_eval "complete" "cloze" "retain" "30" "5" &
+run_eval "complete" "cloze" "retain" "30" "5" &
 
 # ---- selective ----
 # run_eval "selective" "generation" "forget" "" "0" &

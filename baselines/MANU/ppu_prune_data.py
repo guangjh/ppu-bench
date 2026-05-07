@@ -8,10 +8,10 @@ from PIL import Image
 from torch.utils.data import Dataset
 
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_COMPLETE_SPLIT_FILE = REPO_ROOT / "eval" / "split" / "CompleteUnlearning" / "forget_subject_ids.json"
-DEFAULT_SELECTIVE_SPLIT_FILE = REPO_ROOT / "eval" / "split" / "SelectiveUnlearning" / "sensitive_info_subject_id_id.json"
-DEFAULT_PERSONA_SPLIT_FILE = REPO_ROOT / "eval" / "split" / "PersonaUnlearning" / "majority_ids.json"
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+DEFAULT_COMPLETE_SPLIT_FILE = REPO_ROOT / "data" / "split" / "complete_split.json"
+DEFAULT_SELECTIVE_SPLIT_FILE = REPO_ROOT / "data" / "split" / "selective_split.json"
+DEFAULT_PERSONA_SPLIT_FILE = REPO_ROOT / "data" / "split" / "persona_split.json"
 
 SPLIT_FILE_NAMES = {
     "complete": "forget_subject_ids.json",

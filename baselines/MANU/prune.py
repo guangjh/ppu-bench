@@ -6,12 +6,12 @@ from transformers import AutoProcessor, Idefics2ForConditionalGeneration
 from transformers import BitsAndBytesConfig
 import os
 import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
 import pandas as pd
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 from peft import PeftModel
-sys.path.append(('../'))
-sys.path.append(('../../'))
 from datasets import load_dataset, Dataset
 import argparse
 import inspect

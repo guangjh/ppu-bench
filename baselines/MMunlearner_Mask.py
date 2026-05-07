@@ -9,7 +9,7 @@ from accelerate import Accelerator
 from torch.utils.data import ConcatDataset, DataLoader
 
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
+REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(REPO_ROOT))
 sys.path.append(str(REPO_ROOT / "baselines"))
 
