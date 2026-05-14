@@ -5,7 +5,7 @@ Here we provide instructions on how to train your own baselines. Firstly, you ne
 ## GA
 
 ```shell
-CUDA_VISIBLE_DEVICES=0,1 python GA.py \
+python GA.py \
   --model_id [your model path] \
   --vanilla_dir [your model path] \
   # --train_dataset_dir "YOUR_TRAIN_PAIR_PARQUET_PATH" \  # use it if you want to use your own data
@@ -23,7 +23,7 @@ CUDA_VISIBLE_DEVICES=0,1 python GA.py \
 ## GA Difference
 
 ```shell
-CUDA_VISIBLE_DEVICES=0,1 python GA_Diff.py \
+python GA_Diff.py \
   --model_id [your model path] \
   --vanilla_dir [your model path] \
   # --train_dataset_dir "YOUR_TRAIN_PAIR_PARQUET_PATH" \  # use it if you want to use your own data
@@ -41,7 +41,7 @@ CUDA_VISIBLE_DEVICES=0,1 python GA_Diff.py \
 ## KL Minimization
 
 ```shell
-CUDA_VISIBLE_DEVICES=0,1 python KL_Min.py \
+python KL_Min.py \
   --model_id [your model path] \
   --vanilla_dir [your model path] \
   # --train_dataset_dir "YOUR_TRAIN_PAIR_PARQUET_PATH" \  # use it if you want to use your own data
@@ -61,7 +61,7 @@ CUDA_VISIBLE_DEVICES=0,1 python KL_Min.py \
 NPO demands a reference model where we call "oracle model". In our case, we regard origin model as the reference model.
 
 ```shell
-CUDA_VISIBLE_DEVICES=0,1 python NPO.py \
+python NPO.py \
   --model_id [your model path] \
   --vanilla_dir [your model path] \
   --oracle_model_id [your model path] \
@@ -82,7 +82,7 @@ CUDA_VISIBLE_DEVICES=0,1 python NPO.py \
 1. MMUnlearner needs to generate the gradient mask first, run:
 
 ```shell
-CUDA_VISIBLE_DEVICES=0 python MMunlearner_Mask.py \
+python MMunlearner_Mask.py \
   --model_id [your model path] \
   --vanilla_dir [your model path] \
   # --train_dataset_dir "YOUR_TRAIN_PAIR_PARQUET_PATH" \  # use it if you want to use your own data
@@ -96,7 +96,7 @@ CUDA_VISIBLE_DEVICES=0 python MMunlearner_Mask.py \
 2. Then you can run the training process:
 
 ```shell
-CUDA_VISIBLE_DEVICES=0,1 python MMunlearner.py \
+python MMunlearner.py \
   --model_id [your model path] \
   --vanilla_dir [your model path] \
   # --train_dataset_dir "YOUR_TRAIN_PAIR_PARQUET_PATH" \  # use it if you want to use your own data
@@ -115,7 +115,7 @@ CUDA_VISIBLE_DEVICES=0,1 python MMunlearner.py \
 ## MANU
 
 ```shell
-CUDA_VISIBLE_DEVICES=2,3 python MANU/prune_incremental.py \
+python MANU/prune_incremental.py \
   --model_save_name [your model save name] \
   --model_id [your model path] \
   --vanilla_dir [your model path] \
